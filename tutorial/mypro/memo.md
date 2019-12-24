@@ -25,6 +25,7 @@ https://qiita.com/tfrcm/items/27d2c9e4b3334447b6af
   ```
 3. mypro/urls.pyにmyapp.urlsの記述を反映するよう追記（初回のみ？）  
   ```python
+  from django.urls import path,include
   urlpatterns = [
       path('myapp/', include('myapp.urls')),
       path('admin/', admin.site.urls),

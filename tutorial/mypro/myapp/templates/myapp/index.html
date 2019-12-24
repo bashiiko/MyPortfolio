@@ -5,13 +5,13 @@
 
     <h1>Todo List</h1>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <form action="{% url 'myapp:create' %}" method="post">
+    <form action="{% url 'myapp:create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <!-- Todo Name -->
         <div class="form-group">
             <label for="todo" class="col-sm-3 control-label">Todo</label>
-            <div class="col-sm-6">
-                {{ form.body }}
+            <div class="col-sm-4">
+                {{ form.as_p}}
             </div>
         </div>
 

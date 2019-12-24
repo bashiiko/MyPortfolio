@@ -18,7 +18,7 @@ def index(request):
     return render(request, 'myapp/index.html', context)
 
 def create(request):
-    form = PostForm(request.POST)
+    form = PostForm(request.POST,request.FILES)
     # データベースに保存
     form.save(commit=True)
     # reverse()：関数名からurlを逆引き．URLconfのパターンを指定

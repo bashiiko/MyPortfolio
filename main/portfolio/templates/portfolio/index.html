@@ -1,62 +1,55 @@
 
-{% extends 'myapp/base.html' %}
+{% extends 'portfolio/base.html' %}
 
 {% block content %}
+
+
+    <a id="info">
     <div class="about">
+    </a>
+      <div class="inner">
       {% load static %}
-      <img src="{% static 'myapp/myimage.jpg' %}" />
+      <img src="{% static 'portfolio/myimage.jpg' %}" />
+
+      <ul>
       {% for key, value in info.items %}
-        <b>{{ key }}</b>  {{ value }} <br>
+        <li><b>{{ key }}</b> &nbsp; {{ value }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+    </div>
+
+    <div class = "title">
+        <div class = "text">
+            {% load static %}
+            <p> {{title}} </p>
+            <img src="{% static 'portfolio/background1.jpg' %}" />
+        </div>
+        <div class="link">
+          <a href="#info">info</a>
+          <a href="#works">works</a>
+        </div>
+    </div>
+
+    <a id="works"><div class="works"></a>
+      {% for post in posts %}
+      <div class="card">
+        <img src="{{ post.image.url }}">
+        <p class="title">{{ post.title }}</p>
+        <p class="content">{{ post.contents }}</p>
+        <div class="box">
+        {% for l in post.split_tools %}
+            <div class=item>{{ l }}
+        </div>
+        {% endfor %}</div>
+        <div class="box">
+        {% if post.url %}
+            <button class="item" onclick="location.href='{{post.url}}'">github</button>
+        {% endif %}
+        </div>
+      </div>
       {% endfor %}
     </div>
 
-    <h1>Todo List</h1>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <form action="{% url 'myapp:create' %}" method="post">
-        {% csrf_token %}
-        <!-- Todo Name -->
-        <div class="form-group">
-            <label for="todo" class="col-sm-3 control-label">Todo</label>
-            <div class="col-sm-6">
-                {{ form.body }}
-            </div>
-        </div>
-
-        <!-- Add Todo Button -->
-        <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-default">
-                    <i class="fa fa-plus"></i> Add Todo
-                </button>
-            </div>
-        </div>
-
-    </form>
-
-
-    <!-- Current Todos -->
-    <h2>Current Todos</h2>
-    <table class="table table-striped todo-table">
-        <thead>
-            <th>Todos</th><th>&nbsp;</th>
-        </thead>
-
-        <tbody>
-            {% for post in posts %}
-                <tr>
-                    <!-- Todo Name -->
-                    <td>
-                        <div>{{ post.body }}</div>
-                    </td>
-                    <td>
-                        <form action="{% url 'myapp:delete' post.id %}" method="post">
-                            {% csrf_token %}
-                            <button>Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
 {% endblock %}

@@ -11,7 +11,23 @@
         <link rel="stylesheet"
             href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
         <link rel="stylesheet"
+            href="{% static 'portfolio/style_manage.css' %}">
+        <link rel="stylesheet"
             href="{% static 'portfolio/style.css' %}">
+
+        <div class = "manage">
+            <div class = "title">
+                {% load static %}
+                <p> Manager Page </p>
+                <img src="{% static 'portfolio/background1.jpg' %}" />
+            </div>
+            <div class = "link">
+                <a href = "{% url 'portfolio:edit' %}">新規アイテム追加</a>
+                <a href = "{% url 'portfolio:show' %}">一覧表示</a>
+                <a href = "{% url 'portfolio:update' %}">更新</a>
+            </div>
+
+        </div>
     </head>
     <body>
         <div class="container">
@@ -20,9 +36,9 @@
         </div>
     </body>
     <footer>
-        <div class = "title">
+        <div class = "manage">
             <div class = "link">
-                <a href = "{% url 'portfolio:edit' %}">管理用ページへ</a>
+                <a href = "{% url 'portfolio:index' %}">管理ページから退出する</a>
             </div>
 
         </div>
