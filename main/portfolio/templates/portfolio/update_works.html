@@ -18,9 +18,16 @@
                           {% endfor %}
 
                           <div class="field">
-                              <button type="submit" class="btn btn-primary">
+                            {% load check_permission %}
+                            {% if user|in_group:"developer" %}
+                              <button type="submit">
                                   update
                               </button>
+                            {% else %}
+                              <button type="submit"  disabled>
+                                  update権限がありません
+                              </button>
+                            {% endif %}
                           </div>
                 </div>
           </div>

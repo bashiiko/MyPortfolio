@@ -6,7 +6,7 @@
         {% for error in form.non_field_errors %}
             <p style="color:red"><strong>{{ error }}</strong></p>
         {% endfor %}
-        <p> ※管理者ページを閲覧するには、このままログインしてください </p>
+        <p> ※管理者ページを閲覧するには、パスワード『<strong>test</strong>』を入力してログインしてください </p>
         {% csrf_token %}
 
         <div class="form-group">

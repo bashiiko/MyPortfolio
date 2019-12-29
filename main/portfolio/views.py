@@ -2,15 +2,21 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
+
+# modelのインポート
 from .models import Post
-from .forms import PostForm
 from .models import PostActivity
-from .forms import PostActivityForm
 from .models import Login
-from .forms import LoginForm
-from .models import User
 from django.contrib.auth.models import User
+
+# formのインポート
+from .forms import PostForm
+from .forms import PostActivityForm
+from .forms import LoginForm
 from .forms import UserForm
+
+# 権限の管理
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
 def index(request):
@@ -18,11 +24,11 @@ def index(request):
     posts = Post.objects.all()
     posts_activity = PostActivity.objects.all()
     info = {
-        'name': 'バシコ（小林菜穂子）',
+        'name': 'バシコ（コバヤシナオコ）',
         'age':22,
         'affiliation':'電気通信大学大学院 / 高橋（裕）lab',
         'research':'Machine learning, Image processing',
-        'skills(勉強中)':'Matlab, R, Python, jupyter notebook',
+        'skills(勉強中)':'Matlab, R, Python, C, Unity',
         }
 
     urls = {
@@ -50,10 +56,6 @@ def create_user(request):
         # データベースに保存
         if form.is_valid():
             user = form.save()
-            #username = form.cleaned_data.get('username')
-            #password = form.cleaned_data.get('password')
-            #user = authenticate(username=username, password=password)
-            #user = User.objects.get(username=username,password=password )
             login(request, user)
             return redirect('portfolio:add_works')
     else:
@@ -165,7 +167,7 @@ def add_activity(request):
 @login_required
 def show_all_post_activity(request):
     context = {
-        'posts': PostActivity.objects.all(),
+        'posts_activity': PostActivity.objects.all(),
     }
     return render(request, 'portfolio/show_activity.html', context)
 

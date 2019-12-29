@@ -31,7 +31,6 @@ class PostActivity(models.Model):
     contents = models.TextField(verbose_name='contents（任意）', max_length=1000, blank=True, null=True)
     date = models.CharField(verbose_name='年月日など', max_length=255)
     category = models.CharField(verbose_name="category", choices=CHOICE, max_length=255)
-    image = models.ImageField(upload_to='upload/',verbose_name='image（任意）', blank=True, null=True)
 
     def __str__(self):
         return self.title
