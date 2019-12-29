@@ -1,0 +1,31 @@
+{% extends 'portfolio/base_login.html' %}
+
+{% block content %}
+<div class="form_base">
+    <form action="{% url 'portfolio:login' %}" method="post">
+        {% for error in form.non_field_errors %}
+            <p style="color:red"><strong>{{ error }}</strong></p>
+        {% endfor %}
+        <p> ※管理者ページを閲覧するには、このままログインしてください </p>
+        {% csrf_token %}
+
+        <div class="form-group">
+                  {% for field in form %}
+                      <div class="field">
+                          {{ field }}
+                          {{ field.errors }}
+                      </div>
+                  {% endfor %}
+                  <div class="field">
+                      <button type="submit" class="btn btn-primary">
+                          login
+                      </button>
+                  </div>
+        </div>
+    </form>
+
+    <a href = "{% url 'portfolio:create_user' %}">新規ユーザ登録</a>
+</div>
+
+
+{% endblock %}

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<a id="works"><div class="works"></a>
+<div class="works">
   {% for post in posts %}
   <div class="card">
     <img src="{{ post.image.url }}">
@@ -15,7 +15,7 @@
     {% endfor %}</div>
     <div class="box">
     {% if post.url %}
-        <button class="item" onclick="location.href='{{post.url}}'">github</button>
+        <a href='{{post.url}}'><i class="fab fa-github"></i> source code </a>
     {% endif %}
     </div>
   </div>

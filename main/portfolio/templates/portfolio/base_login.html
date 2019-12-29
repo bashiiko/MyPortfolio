@@ -3,7 +3,6 @@
 <html>
     <head>
         <title>My portfolio</title>
-
         <!-- CSS And JavaScript -->
         <link rel="stylesheet"
             href="//fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap">
@@ -11,22 +10,34 @@
             href="//fonts.googleapis.com/css?family=Permanent+Marker&display=swap">
         <link rel="stylesheet"
             href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+
         <link rel="stylesheet"
             href="{% static 'portfolio/style.css' %}">
-
-    </head>
-    <body bgcolor="#f5f5f5" >
+        <link rel="stylesheet"
+            href="{% static 'portfolio/style_manage.css' %}">
         <script src="https://kit.fontawesome.com/c721bc43c6.js"
             crossorigin="anonymous"></script>
+
+        <div class = "title">
+            <div class = "text">
+                {% load static %}
+                <p> Login Page </p>
+                <img src="{% static 'portfolio/background1.jpg' %}" />
+            </div>
+
+        </div>
+    </head>
+    <body bgcolor="#f5f5f5">
         <div class="container">
             {% block content %}
             {% endblock %}
         </div>
     </body>
     <footer>
+        <a href="{% url 'portfolio:logout' %}">ログアウト</a>
         <div class = "title">
             <div class = "link">
-                <a href = "{% url 'portfolio:add_works' %}">管理用ページへ</a>
+                <a href = "{% url 'portfolio:index' %}">管理ページから退出する</a>
             </div>
 
         </div>

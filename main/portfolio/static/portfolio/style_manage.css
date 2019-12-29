@@ -1,58 +1,33 @@
 /* 管理ページ用CSS */
 
-/* header */
-.manage {
-    text-align:  center;
-    background-color: #f5f5f5;
-    width: 100%;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-}
-
-.manage .title {
-  position: relative;
-  height: 200px;
-}
-
-.manage .title p{
-  position: absolute;
-  font-size: 40px;
-  font-family: 'Permanent Marker', cursive;
-  background-color: rgba(255, 255, 255 ,0.7);
-  top: calc(50% - 40px);
-  width: 100%;
-}
-
-.manage .title img{
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.manage .link{
-  width: 100%;
-  background-color: #cd5c5c;
-  display: flex;
-}
-
-.manage .link a{
+/* header*/
+.title .link div{
   padding: 20px;
   color: #f5f5f5;
+  font-weight: bold;
   text-decoration: none;
-  	width: 100%;
-
+	width: 100%;
+  border-bottom: #f5f5f5 solid 3px;
 }
 
-.manage .link a:hover{
-    text-decoration: underline dotted #f5f5f5;
+.title .halflink{
+  width: 50%;
+  background-color: #cd5c5c;
+  display: flex;
+  border-right:#f5f5f5 solid 3px;
 }
 
-/* footer */
-
+.title .halflink a{
+  color: #f5f5f5;
+  text-decoration: none;
+	width: 100%;
+  font-size: 20px;
+}
 
 
 /* form */
 
-.add {
+.form_base {
     text-align:  center;
     background-color: #f5f5f5;
     padding: 30px;
@@ -60,13 +35,28 @@
     font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-.add .form-group{
+.form_base .form-group{
 	border:0;
 	padding:20px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   color: #666;
 	margin:0px auto;
 	width:400px;
+}
+
+.form_base a{
+  text-decoration: none;
+  color:#444;
+}
+.form_base a:before{
+  font-family: FontAwesome;
+  content:"\f101";
+  padding-right: 5px;
+  color:#444;
+}
+
+.form_base a:hover{
+  color:#cd5c5c;
 }
 
 

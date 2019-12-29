@@ -2,11 +2,25 @@
 {% extends 'portfolio/base.html' %}
 
 {% block content %}
+<div class="main">
 
+    <div class = "title">
+        <div class = "text">
+            {% load static %}
+            <p> {{title}} </p>
+            <img src="{% static 'portfolio/background1.jpg' %}" />
+        </div>
+        <div class="toplink">
+          <a href="#profile">profile</a>
+          <a href="#works">works</a>
+          <a href="#activity">activity</a>
+        </div>
+    </div>
 
-    <a id="info">
-    <div class="about">
+    <a id="profile">
+      <div class="heading"> Profile </div>
     </a>
+    <div class="about">
       <div class="inner">
       {% load static %}
       <img src="{% static 'portfolio/myimage.jpg' %}" />
@@ -15,23 +29,21 @@
       {% for key, value in info.items %}
         <li><b>{{ key }}</b> &nbsp; {{ value }}</li>
       {% endfor %}
+
+      <li>
+        <a href="{{urls.github}}"><i class="fab fa-github"></i>{{urls.github}}</a>
+      </li>
+      <li>
+        <a href="mailto:{{urls.email}}"><i class="far fa-envelope"></i>{{urls.email}}</a>
+      </li>
       </ul>
     </div>
     </div>
 
-    <div class = "title">
-        <div class = "text">
-            {% load static %}
-            <p> {{title}} </p>
-            <img src="{% static 'portfolio/background1.jpg' %}" />
-        </div>
-        <div class="link">
-          <a href="#info">info</a>
-          <a href="#works">works</a>
-        </div>
-    </div>
-
-    <a id="works"><div class="works"></a>
+    <a id="works">
+      <div class="heading"> Works </div>
+    </a>
+    <div class="works">
       {% for post in posts %}
       <div class="card">
         <img src="{{ post.image.url }}">
@@ -44,12 +56,53 @@
         {% endfor %}</div>
         <div class="box">
         {% if post.url %}
-            <button class="item" onclick="location.href='{{post.url}}'">github</button>
+            <a href='{{post.url}}'><i class="fab fa-github"></i> source code </a>
         {% endif %}
         </div>
       </div>
       {% endfor %}
     </div>
 
+    <a id="activity">
+      <div class="heading"> Activity </div>
+    </a>
+    <div class="activity">
+      <div class="col">
+      <span style="color:#234990" class="item">
+        <i class="fas fa-graduation-cap" style="margin-right:10px"></i>研究</span>
+      <span style="color:#EC3D33" class="item">
+        <i class="fas fa-school" style="margin-right:10px"></i>学校生活</span>
+      <span style="color:#F5B12E" class="item">
+        <i class="fas fa-running" style="margin-right:10px"></i>その他</span>
+      </div>
+
+      {% for post in posts_activity %}
+      <div class="box">
+        <div class="top">
+          {% if post.category == "0" %}
+            <div class="text" style="color:#234990">
+              <i class="fas fa-graduation-cap" style="margin-right:10px"></i>
+              {{ post.title }}</div>
+          {% elif post.category == "1" %}
+            <div class="text" style="color:#EC3D33">
+              <i class="fas fa-school" style="margin-right:10px"></i>
+              {{ post.title }}</div>
+          {% elif post.category == "2" %}
+            <div class="text" style="color:#F5B12E" >
+              <i class="fas fa-running" style="margin-right:10px"></i>
+              {{ post.title }}</div>
+          {% endif %}
+          <div class="date">{{post.date}}</div>
+        </div>
+        {% if post.contents %}
+          <p class="contents">{{ post.contents }}</p>
+        {% endif %}
+
+      </div>
+      {% endfor %}
+
+    </div>
+
+</div>
 
 {% endblock %}
