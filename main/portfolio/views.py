@@ -45,17 +45,24 @@ from django.contrib.auth.decorators import login_required
 
 def create_user(request):
     if request.method == 'POST':
-        form = UserForm(data=request.POST)
+        form = UserForm(request.POST)
 
         # データベースに保存
         if form.is_valid():
             user = form.save()
+            #username = form.cleaned_data.get('username')
+            #password = form.cleaned_data.get('password')
+            #user = authenticate(username=username, password=password)
+            #user = User.objects.get(username=username,password=password )
             login(request, user)
             return redirect('portfolio:add_works')
     else:
         form = UserForm()
 
-    return render(request, 'portfolio/login.html' , {'form': form,})
+    context = {
+        'form': form,
+    }
+    return render(request, 'portfolio/create_user.html', context)
 
 def Login(request):
     if request.method == 'POST':
