@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +91,7 @@ DATABASES = {
         'OPTIONS': {
             'charset': 'utf8mb4',
             'sql_mode': 'TRADITIONAL,NO_AUTO_VALUE_ON_ZERO,ONLY_FULL_GROUP_BY',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             }
     }
 }
@@ -159,3 +162,10 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+# 本番環境での画像アップロード用
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hrhmkepwu',
+    'API_KEY': '759967245739662',
+    'API_SECRET': '2Szz5y6XEPTRGdSZ7z0ruzdPLcs'
+}
