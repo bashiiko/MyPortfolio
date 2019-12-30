@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-
+# Django==2.1を指定してインストールする
 import pymysql
 pymysql.install_as_MySQLdb()
 
