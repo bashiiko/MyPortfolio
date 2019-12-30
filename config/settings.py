@@ -20,12 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'xts9(viqc7!o2#02&6)x6(h4@$r)-qqz*k_5)p=19ekw=8t39$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -48,9 +47,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'main.urls'
+ROOT_URLCONF = 'config.urls'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 TEMPLATES = [
     {
@@ -68,8 +69,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'main.wsgi.application'
 
 
 import pymysql
@@ -136,7 +135,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+if not DEBUG:
+    SECRET_KEY = os.environ['SECRET_KEY']
+    import django_heroku
+    django_heroku.settings(locals())
 
 # 画像を保存するディレクトリ
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -146,5 +151,7 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'portfolio:login'
 LOGIN_REDIRECT_URL = 'portfolio:add_work'
 
-
-#sAUTH_USER_MODEL = 'portfolio.User'
+try:
+    from .local_settings import *
+except ImportError:
+    pass
