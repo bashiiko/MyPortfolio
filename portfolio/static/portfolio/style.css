@@ -238,3 +238,133 @@
   border-left: 3px solid #666;
   padding-left: 20px;
 }
+
+/* 管理ページ用CSS */
+
+/* header*/
+.title .link div{
+  padding: 20px;
+  color: #f5f5f5;
+  font-weight: bold;
+  text-decoration: none;
+	width: 100%;
+  border-bottom: #f5f5f5 solid 3px;
+}
+
+.title .halflink{
+  width: 50%;
+  background-color: #cd5c5c;
+  display: flex;
+  border-right:#f5f5f5 solid 3px;
+}
+
+.title .halflink a{
+  color: #f5f5f5;
+  text-decoration: none;
+	width: 100%;
+  font-size: 15px;
+}
+
+
+/* form */
+
+.form_base {
+    text-align:  center;
+    background-color: #f5f5f5;
+    padding: 30px;
+    width: auto;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.form_base .form-group{
+	border:0;
+	padding:20px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: #666;
+	margin:0px auto;
+	width:400px;
+}
+
+.form_base a{
+  text-decoration: none;
+  color:#444;
+}
+.form_base a:before{
+  font-family: FontAwesome;
+  content:"\f101";
+  padding-right: 5px;
+  color:#444;
+}
+
+.form_base a:hover{
+  color:#cd5c5c;
+}
+
+
+/* エラーの場合に作成されるul要素は、errorlistというクラス名がついている */
+.errorlist {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    color: red;
+}
+
+div.field{
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* > : 子供セレクタ（孫要素以下には反映されない） */
+div.field > input, div.field  > textarea, div.field  > select, div.field > button {
+    width: 100%;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: solid 1px #999;
+}
+
+
+div.field > input:focus, div.field > textarea:focus, div.field > select:focus   {
+  border: solid 1px #cd5c5c;
+  outline: 0;
+}
+
+
+/* update */
+
+.update{
+  text-align:  center;
+  background-color: #cd5c5c;
+  background-color: #f5f5f5;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* form */
+.update .card {
+    width: 300px;
+    height: 530px;
+    margin: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px #ccc;
+}
+
+.update .form-group{
+	border:0;
+	padding:20px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: #666;
+	margin:0px auto;
+	width:250px;
+}
+
+.field > input, div.field  > textarea, div.field  > select, div.field > button {
+    width: 100%;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: solid 1px #999;
+}
