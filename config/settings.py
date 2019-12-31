@@ -144,16 +144,11 @@ STATICFILES_DIRS = (
 )
 STATIC_URL = '/static/'
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-
 if not DEBUG:
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     import django_heroku
     django_heroku.settings(locals())
-    del DATABASES['default']['OPTIONS']['sslmode']
+    #del DATABASES['default']['OPTIONS']['sslmode']
 
 # 画像を保存するディレクトリ
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -173,3 +168,8 @@ CLOUDINARY_STORAGE = {
 
 # ImageFieldとcloudinaryの紐づけ
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
