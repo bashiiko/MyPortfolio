@@ -138,10 +138,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+# 本番環境でのみ使用．collectstaticでSTATICFILES_DIRSから集められる
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# 個別のアプリケーションではなく、トップページに表示する画像などを保管する任意の場所
+# 各アプリケーションのstatic以外に配信するディレクトリがある場合に追加
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'portfolio/static/'),
+    os.path.join(BASE_DIR, 'assets'),
 )
+# web serverに静的ファイルを見に行く場所を指定．変更しなくてOK
 STATIC_URL = '/static/'
 
 if not DEBUG:
