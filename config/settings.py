@@ -139,21 +139,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 # 本番環境でのみ使用．collectstaticでSTATICFILES_DIRSから集められる
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # 個別のアプリケーションではなく、トップページに表示する画像などを保管する任意の場所
 # 各アプリケーションのstatic以外に配信するディレクトリがある場合に追加
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'assets'),
-)
+#STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR, 'portfolio/static/'),
+#)
 # web serverに静的ファイルを見に行く場所を指定．変更しなくてOK
 STATIC_URL = '/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
+
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
 if not DEBUG:
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     import django_heroku
     django_heroku.settings(locals())
-    del DATABASES['default']['OPTIONS']['sslmode']
+    #del DATABASES['default']['OPTIONS']['sslmode']
 
 # 画像を保存するディレクトリ
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
