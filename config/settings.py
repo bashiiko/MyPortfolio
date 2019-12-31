@@ -36,9 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'cloudinary',
     'cloudinary_storage',
+    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -169,3 +169,6 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '759967245739662',
     'API_SECRET': '2Szz5y6XEPTRGdSZ7z0ruzdPLcs'
 }
+
+# ImageFieldとcloudinaryの紐づけ
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
