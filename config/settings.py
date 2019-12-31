@@ -144,6 +144,11 @@ STATICFILES_DIRS = (
 )
 STATIC_URL = '/static/'
 
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 if not DEBUG:
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     import django_heroku
@@ -158,10 +163,6 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'portfolio:login'
 LOGIN_REDIRECT_URL = 'portfolio:add_work'
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
 # 本番環境での画像アップロード用
 CLOUDINARY_STORAGE = {
