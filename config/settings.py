@@ -148,7 +148,7 @@ if not DEBUG:
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
     import django_heroku
     django_heroku.settings(locals())
-    #del DATABASES['default']['OPTIONS']['sslmode']
+    del DATABASES['default']['OPTIONS']['sslmode']
 
 # 画像を保存するディレクトリ
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
