@@ -2,7 +2,13 @@
 {% extends 'portfolio/base.html' %}
 
 {% block content %}
-<div class="main">
+
+
+<div id="onload_box">
+  <div id="message"></div>
+  <a href="#" onclick="change(this)" id="onload_button">▼</a>
+</div>
+<div id="main">
 
     <div class = "title">
         <div class = "text">
@@ -10,11 +16,12 @@
             <p> {{title}} </p>
             <img src="{% static 'portfolio/background1.jpg' %}" />
         </div>
-        <div class="toplink">
-          <a href="#profile">profile</a>
-          <a href="#works">works</a>
-          <a href="#activity">activity</a>
-        </div>
+    </div>
+
+    <div class="toplink">
+      <a href="#profile">profile</a>
+      <a href="#works">works</a>
+      <a href="#activity">activity</a>
     </div>
 
     <a id="profile">
@@ -40,6 +47,8 @@
     </div>
     </div>
 
+    <div class="triangle">▼</div>
+
     <a id="works">
       <div class="heading"> Works </div>
     </a>
@@ -62,6 +71,8 @@
       </div>
       {% endfor %}
     </div>
+
+    <div class="triangle">▼</div>
 
     <a id="activity">
       <div class="heading"> Activity </div>
@@ -103,6 +114,12 @@
 
     </div>
 
+    <div class = "title">
+        <div class = "link">
+            <a href = "{% url 'portfolio:add_works' %}">管理用ページへ</a>
+        </div>
+
+    </div>
 </div>
 
 {% endblock %}

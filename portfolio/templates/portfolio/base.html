@@ -1,7 +1,9 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-    <head>
+    <head
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      	<meta charset="utf-8" />
         <title>My portfolio</title>
 
         <!-- CSS And JavaScript -->
@@ -14,21 +16,57 @@
         <link rel="stylesheet"
             href="{% static 'portfolio/style.css' %}">
 
+      <script type="text/javascript">
+        function onLoad() {
+          elem = document.getElementById("message");
+          elem.innerText = "ポートフォリオをご覧いただき\nありがとうございます！";
+
+          elem = document.getElementById("main");
+          elem.style.display="none";
+        }
+
+        function change(button){
+          elem = document.getElementById("message");
+          elem.innerText = "ページ下部の「管理用ページへ」から、\n編集用のページもご確認いただけます！\nぜひご覧ください。";
+          button.onclick=new Function("move()")
+        }
+
+        function move(){
+          elem = document.getElementById("message");
+          elem.innerText = "";
+
+          elem = document.getElementById("onload_button");
+          elem.style.display = "none";
+
+          var box = document.getElementById("onload_box");
+          box.classList.add("on")
+          //elem.onclick = new Function("start()")
+
+            elem = document.getElementById("main");
+            elem.style.display="inline-block";
+            elem.classList.add("on")
+            //elem.style.visibility: hidden;
+        }
+
+        function start(){
+          elem = document.getElementById("main");
+          elem.classList.add("on")
+          //elem.style.display="inline-block";
+        }
+
+      </script>
+
     </head>
-    <body bgcolor="#f5f5f5" >
+    <body bgcolor="#f5f5f5", onload="onLoad()">
         <script src="https://kit.fontawesome.com/c721bc43c6.js"
             crossorigin="anonymous"></script>
         <div class="container">
+
             {% block content %}
             {% endblock %}
         </div>
     </body>
     <footer>
-        <div class = "title">
-            <div class = "link">
-                <a href = "{% url 'portfolio:add_works' %}">管理用ページへ</a>
-            </div>
 
-        </div>
     </footer>
 </html>
