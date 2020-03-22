@@ -24,8 +24,8 @@ APP_DIR = os.path.dirname(os.path.abspath(__file__))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
-
+#ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -139,7 +139,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 # 本番環境でのみ使用．collectstaticでSTATICFILES_DIRSから集められる
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = 'staticfiles'
 
 # 個別のアプリケーションではなく、トップページに表示する画像などを保管する任意の場所
 # 各アプリケーションのstatic以外に配信するディレクトリがある場合に追加
@@ -148,6 +149,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #)
 # web serverに静的ファイルを見に行く場所を指定．変更しなくてOK
 STATIC_URL = '/static/'
+
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
