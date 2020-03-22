@@ -80,6 +80,7 @@ https://qiita.com/tfrcm/items/27d2c9e4b3334447b6af
 ## herokuへデプロイ
 gitへpush後
 ```console
+$  python manage.py collectstatic（静的ファイルに変更があった場合
 $ sudo heroku login (必要に応じて．sudoをつけないとエラー)
 $ sudo git push heroku master
 $ sudo heroku run python manage.py migrate

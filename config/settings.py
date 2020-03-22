@@ -165,7 +165,10 @@ if not DEBUG:
     django_heroku.settings(locals())
     # 本番環境で必要
     # ローカルで開発の時はコメントアウトする
-    del DATABASES['default']['OPTIONS']['sslmode']
+    try:
+        del DATABASES['default']['OPTIONS']['sslmode']
+    except KeyError:
+        pass
 
 # 画像を保存するディレクトリ
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
