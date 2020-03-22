@@ -209,7 +209,6 @@
 
 .title .link a{
   padding: 20px;
-  height:10vh;
   color: #f5f5f5;
   text-decoration: none;
 	width: 100%;
@@ -228,7 +227,7 @@
 }
 
 .toplink a{
-  padding: 30px;
+  padding: 10px;
   color: #f5f5f5;
   text-decoration: none;
 	width: 100%;
