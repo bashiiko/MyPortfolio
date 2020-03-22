@@ -84,3 +84,12 @@ $ sudo heroku login (必要に応じて．sudoをつけないとエラー)
 $ sudo git push heroku master
 $ sudo heroku run python manage.py migrate
 ```
+エラーが出たら
+setings.pyに```del DATABASES['default']['OPTIONS']['sslmode']```
+https://github.com/jacobian/dj-database-url/issues/107
+
+※ただし，テスト環境では逆にこれがあるとエラーになる
+例外処理すべき？
+```
+TypeError: __init__() got an unexpected keyword argument 'sslmode'
+```
