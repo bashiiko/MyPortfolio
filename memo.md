@@ -77,3 +77,10 @@ https://qiita.com/tfrcm/items/27d2c9e4b3334447b6af
   {% load static %}
   <img src="{% static 'myapp/myimage.jpg' %}" />
   ```
+## herokuへデプロイ
+gitへpush後
+```console
+$ sudo heroku login (必要に応じて．sudoをつけないとエラー)
+$ sudo git push heroku master
+$ sudo heroku run python manage.py migrate
+```
